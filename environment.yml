@@ -1,6 +1,0 @@
-name: facerecognition
-channels:
-  - defaults
-dependencies:
-  - streamlit
-  - dlib
