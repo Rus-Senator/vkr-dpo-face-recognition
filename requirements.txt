@@ -1,5 +1,5 @@
 Pillow
 streamlit
-dlib==19.4
+dlib
 cmake
 face_recognition
