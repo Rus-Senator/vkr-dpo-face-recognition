@@ -1,3 +1,5 @@
 Pillow
 streamlit
+cmake
+dlib
 face_recognition
