@@ -1,2 +1,4 @@
 cmake
 libx11-dev
+liblapack-dev
+libopenblas-dev
