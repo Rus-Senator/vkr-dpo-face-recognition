@@ -1,6 +1,7 @@
-name: dlib
+name: facerecognition
 channels:
   - conda-forge
+  - defaults
 dependencies:
   - streamlit
   - dlib
