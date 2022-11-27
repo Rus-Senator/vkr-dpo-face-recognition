@@ -11,7 +11,7 @@ def load_image():
         opencv_image = cv2.imdecode(file_bytes, 1)
         return opencv_image
     else:
-        return None
+        return ''
 
 st.title('WEB-приложение: распознавание лиц на фото')
 st.write('Распознает лица на фотографии, рисует квадрат синего цвета на области лица')
@@ -24,8 +24,6 @@ if result:
     if len(img):
         # Load the cascade
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-        # Read the input image
-        #img = cv2.imread(img)
 
         # Convert into grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
