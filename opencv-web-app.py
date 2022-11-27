@@ -28,7 +28,7 @@ if result:
         # Convert into grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         # Detect faces
-        faces = face_cascade.detectMultiScale(gray, 1.1,4)
+        faces = face_cascade.detectMultiScale(gray, 1.1,4,minSize=(20, 20))
         st.write(f'Распознано лиц: {len(faces)}')
         # Draw rectangle around the faces
         for (x, y, w, h) in faces:
