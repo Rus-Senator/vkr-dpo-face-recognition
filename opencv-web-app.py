@@ -25,6 +25,10 @@ if result:
         # Load the cascade
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
+        if img.shape[1] > 1000:
+            dsize = (1000, int((1000/img.shape[1])*img.shape[0]))
+            img = cv2.resize(img, dsize, interpolation = cv2.INTER_AREA)
+
         # Convert into grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         # Detect faces
