@@ -25,21 +25,21 @@ result = st.button('Распознать лица')
 if result:
 
     if len(img):
-        # Load the cascade
+        # Загружаем Каскад
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
         if img.shape[1] > 1000:
             dsize = (1000, int((1000 / img.shape[1]) * img.shape[0]))
             img = cv2.resize(img, dsize, interpolation=cv2.INTER_AREA)
 
-        # Convert into grayscale
+        # Преобразование в серый, нужно для OpenCV
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        # Detect faces
+        # Вызов метода обнаружения лиц
         faces = face_cascade.detectMultiScale(gray, 1.1, 4, minSize=(20, 20))
         st.write(f'Распознано лиц: {len(faces)}')
-        # Draw rectangle around the faces
+        # Рисуем квадрат по точкам
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-        # Display the output
+        # Отображаем содержимое через st
         st.image(img, channels="BGR")
