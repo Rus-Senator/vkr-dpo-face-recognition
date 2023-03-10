@@ -2,6 +2,7 @@ import cv2
 import streamlit as st
 import numpy as np
 
+
 def load_image():
     uploaded_file = st.file_uploader(label='Выберите изображение')
     if uploaded_file is not None:
@@ -13,8 +14,10 @@ def load_image():
     else:
         return ''
 
+
 st.title('WEB-приложение: распознавание лиц на фото')
-st.write('Распознает лица на фотографии, рисует квадрат синего цвета на области лица')
+
+st.write('Распознает лица на фотографии, рисует квадрат синего цвета вокруг распознанной области лица. Используется OpenCV, каскад Хаара haarcascade_frontalface_default.xml. ')
 img = load_image()
 
 result = st.button('Распознать лица')
@@ -26,17 +29,17 @@ if result:
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
         if img.shape[1] > 1000:
-            dsize = (1000, int((1000/img.shape[1])*img.shape[0]))
-            img = cv2.resize(img, dsize, interpolation = cv2.INTER_AREA)
+            dsize = (1000, int((1000 / img.shape[1]) * img.shape[0]))
+            img = cv2.resize(img, dsize, interpolation=cv2.INTER_AREA)
 
         # Convert into grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         # Detect faces
-        faces = face_cascade.detectMultiScale(gray, 1.1,4,minSize=(20, 20))
+        faces = face_cascade.detectMultiScale(gray, 1.1, 4, minSize=(20, 20))
         st.write(f'Распознано лиц: {len(faces)}')
         # Draw rectangle around the faces
         for (x, y, w, h) in faces:
-            cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+            cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
         # Display the output
-        st.image(img,channels="BGR")
-        #cv2.imshow('img', img)
+        st.image(img, channels="BGR")
