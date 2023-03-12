@@ -17,7 +17,8 @@ def load_image():
 
 st.title('WEB-приложение: распознавание лиц на фото')
 
-st.write('Распознает лица на фотографии, рисует квадрат синего цвета вокруг распознанной области лица. Используется OpenCV, каскад Хаара haarcascade_frontalface_default.xml. ')
+st.write('Распознает лица на фотографии, рисует квадрат синего цвета вокруг распознанной области лица. Используется '
+         'OpenCV, каскад Хаара haarcascade_frontalface_default.xml. ')
 img = load_image()
 
 result = st.button('Распознать лица')
